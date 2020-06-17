@@ -1,10 +1,11 @@
 #include <QApplication>
-#include <QMainWindow>
+#include "mainwindow.h"
 
 int main(int argc,  char *argv[])
 {
     QApplication app(argc,argv);
-    QMainWindow window;
+    MainWindow window;
+    /* window.initUI(); */
     window.setWindowTitle("ImageViewer");
     window.show();
     return app.exec();

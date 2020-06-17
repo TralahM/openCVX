@@ -1,27 +1,61 @@
-#ifndef __MAINW
-#define __MAINW
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMenuBar>
+#include <QToolBar>
+#include <QAction>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QStatusBar>
+#include <QLabel>
+#include <QGraphicsPixmapItem>
 
-class MainWindow : public QMainWindow{
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
-    public:
-        explicit MainWindow(QWidget *parent=nullptr);
-        ~MainWindow();
-    private:
-        void initUI();
-    private:
-        QMenu *fileMenu;
-        QMenu *viewMenu;
 
-        QToolBar *fileToolBar;
-        QToolBar *viewToolBar;
+public:
+    explicit MainWindow(QWidget *parent=nullptr);
+    ~MainWindow();
 
-        QGraphicsScene *imageScene;
-        QGraphicsView *imageView;
+private:
+    void initUI();
+    void createActions();
+    void showImage(QString);
+    void setupShortcuts();
 
-        QStatusBar *mainStatusBar;
-        QLabel *mainStatusLabel;
+private slots:
+    void openImage();
+    void zoomIn();
+    void zoomOut();
+    void prevImage();
+    void nextImage();
+    void saveAs();
+
+private:
+    QMenu *fileMenu;
+    QMenu *viewMenu;
+
+    QToolBar *fileToolBar;
+    QToolBar *viewToolBar;
+
+    QGraphicsScene *imageScene;
+    QGraphicsView *imageView;
+
+    QStatusBar *mainStatusBar;
+    QLabel *mainStatusLabel;
+
+    QAction *openAction;
+    QAction *saveAsAction;
+    QAction *exitAction;
+    QAction *zoomInAction;
+    QAction *zoomOutAction;
+    QAction *prevAction;
+    QAction *nextAction;
+
+    QString currentImagePath;
+    QGraphicsPixmapItem *currentImage;
 };
 
-#endif
+#endif // MAINWINDOW_H

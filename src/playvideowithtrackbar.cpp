@@ -1,7 +1,7 @@
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/opencv.hpp>
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 
@@ -37,9 +37,9 @@ int main(int argc, const char *argv[])
         }
         char c=(char)cv::waitKey(10);
         if(c=='s')//single step
-        {g_run=1;cout<<"Single step, run= ",<<g_run<<endl;}
+        {g_run=1;cout<<"Single step, run= "<<g_run<<endl;}
         if(c=='r')//run mode')
-        {g_run=-1;cout<<"Run mode, run= ",<<g_run<<endl;}
+        {g_run=-1;cout<<"Run mode, run= "<<g_run<<endl;}
         if(c==27)
             break;
     }
